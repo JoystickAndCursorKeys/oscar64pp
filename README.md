@@ -18,3 +18,10 @@ node oscar64.js <path_to_oscar64> <temporary_path> <options_to_oscar64> <files_t
 
 See tests folder and buildtests script on how to compile.
 See tests folder and src/testgen.c on some examples of code generation embedded in a c file
+
+Utility function:
+These are extra functions to help you do code generation or data generation:
+
+--loadPicture( filename )
+--mod(a,b) = modulus
+--round(a) = rounding down or up

@@ -8,7 +8,7 @@ It is a wrapper.  It allows for inline code and data generation during compile t
 It does this by allowing you to write javascript code in your c files, inbetween start and end markers.
  
 --Usage:  
-node oscar64.js <path_to_oscar64> <temporary_path> <options_to_oscar64> <files_to_oscar64>
+>node oscar64.js <path_to_oscar64> <temporary_path> <options_to_oscar64> <files_to_oscar64>
 
 * First param is path to oscar64 binary  
 * Second param is temporary path for generated files  

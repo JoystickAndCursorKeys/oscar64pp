@@ -41,15 +41,15 @@ To create/generated code, you can use the following keywords:
 --Utility functions:  
 These are extra functions to help you do code generation or data generation  
 
---pic = loadPicture( filename )  ; load a picture (png file)  
+*pic = loadPicture( filename )  ; load a picture (png file)  
 > byte = pic.get8MonoPixels( x, y , rgbForGroundColor )   ; get byte of 8 mono colored pixels, starting at x,y    
 > rgb = getRGBPixel( x, y )                               ; get rgb object, representing the pixel    
 > index = getPalettePixel( x, y, rgbArray)                ; get index of pixel, according to where the rgbValue matches the input color palette    
   
---res = mod(a,b)                                        ; modulus    
---res = round(a)                                        ; rounding down or up  
+*res = mod(a,b)                                        ; modulus    
+*res = round(a)                                        ; rounding down or up  
   
---console.log( string or object )                       ; log result during compiling / preprocessing for investigation  
+* console.log( string or object )                       ; log result during compiling / preprocessing for investigation  
   
 --Example:  
 Create an array of chars, with values that represent the cosinus function.  

@@ -13,7 +13,7 @@ All other params without "-" are files to be preprocessed
 All other params with "-" will be used for calling the compiler
 All preprocessed files will be passed to the compiler
     
-*Usage:
+>>Usage:
 node oscar64.js <path_to_oscar64> <temporary_path> <options_to_oscar64> <files_to_oscar64>
 
 See tests folder and buildtests script on how to compile.

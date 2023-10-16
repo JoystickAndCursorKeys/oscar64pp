@@ -7,7 +7,7 @@ This program can be called instead of the oscar64 compiler.
 It is a wrapper.  It allows for inline code and data generation during compile time.
 It does this by allowing you to write javascript code in your c files, inbetween start and end markers.
 
-**Prerequisits:** 
+**Prerequisits:**  
 You need to have Nodejs installed, as well as "pngjs"
 To install pngjs, just type: "npm install pngjs" on the commandline.
  

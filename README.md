@@ -10,11 +10,11 @@ It does this by allowing you to write javascript code in your c files, inbetween
 --Usage:  
 node oscar64.js <path_to_oscar64> <temporary_path> <options_to_oscar64> <files_to_oscar64>
 
-. First param is path to oscar64 binary  
-. Second param is temporary path for generated files  
-. All other params without "-" are files to be preprocessed  
-. All other params with "-" will be used for calling the compiler  
-. All preprocessed files will be passed to the compiler  
+* First param is path to oscar64 binary  
+* Second param is temporary path for generated files  
+* All other params without "-" are files to be preprocessed  
+* All other params with "-" will be used for calling the compiler  
+* All preprocessed files will be passed to the compiler  
 
 See tests folder and buildtests script on how to compile.
 See tests folder and src/testgen.c on some examples of code generation embedded in a c file

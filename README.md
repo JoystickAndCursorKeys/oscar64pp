@@ -50,8 +50,8 @@ These are extra functions to help you do code generation or data generation:
 *Example:
 Create an array of chars, with values that represent the cosinus function.
 
->char cos[256] = {
->/*!CGJS
+>char cos[256] = {  
+>/*!CGJS  
 >  
 >  const amplitude = 127;   
 >  const frequency = 2 * Math.PI / 256;   

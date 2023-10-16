@@ -7,7 +7,7 @@ This program can be called instead of the oscar64 compiler.
 It is a wrapper.  It allows for inline code and data generation during compile time.
 It does this by allowing you to write javascript code in your c files, inbetween start and end markers.
 
-First param is path to oscar64 binary 
+First param is path to oscar64 binary  
 Second param is temporary path for generated files  
 All other params without "-" are files to be preprocessed  
 All other params with "-" will be used for calling the compiler  

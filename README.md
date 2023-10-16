@@ -1,4 +1,4 @@
-[oscar64pp]
+**oscar64pp**
 
 NodeJS preprocessor for Oscar64
 (c) 2023 by Dusty Murray (also under the psuedonym "Cursor Keys" or "Cursor Keys Retro")
@@ -7,7 +7,7 @@ This program can be called instead of the oscar64 compiler.
 It is a wrapper.  It allows for inline code and data generation during compile time.
 It does this by allowing you to write javascript code in your c files, inbetween start and end markers.
  
---Usage:  
+**Usage:**  
 >node oscar64.js <path_to_oscar64> <temporary_path> <options_to_oscar64> <files_to_oscar64>
 
 * First param is path to oscar64 binary  
@@ -19,7 +19,7 @@ It does this by allowing you to write javascript code in your c files, inbetween
 See tests folder and buildtests script on how to compile.
 See tests folder and src/testgen.c on some examples of code generation embedded in a c file
 
---Start and End tag:  
+**Start and End tag:**  
 >/*!CGJS
 
 starts a section of nodejs code, where you can do code generation  
@@ -29,7 +29,7 @@ starts a section of nodejs code, where you can do code generation
 end a section of nodejs code, where you can do code generation  
 *Note: this has to be on the end of a line  
 
---Code Generation:  
+**Code Generation:**  
 To create/generated code, you can use the following keywords:  
 * .byte     - create a small number (0-255)  
 * .word     - split the number up into a low and hi byte, and output both  
@@ -38,7 +38,7 @@ To create/generated code, you can use the following keywords:
 * .string   - creates a "string"    
 * .code     - any C code  
   
---Utility functions:  
+**Utility functions:**  
 These are extra functions to help you do code generation or data generation  
 
 * pic = loadPicture( filename )  ; load a picture (png file)  
@@ -51,7 +51,7 @@ These are extra functions to help you do code generation or data generation
   
 * console.log( string or object )                       ; log result during compiling / preprocessing for investigation  
   
---Example:  
+**Example:**  
 Create an array of chars, with values that represent the cosinus function.  
   
 >char cos[256] = {  

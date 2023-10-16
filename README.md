@@ -23,9 +23,9 @@ Utility function:
 These are extra functions to help you do code generation or data generation:
 
 --pic = loadPicture( filename )  ; load a picture (png file)
-byte = pic.get8MonoPixels( x, y , rgbForGroundColor )   ; get byte of 8 mono colored pixels, starting at x,y
-rgb = getRGBPixel( x, y )                               ; get rgb object, representing the pixel
-index = getPalettePixel( x, y, rgbArray)                ; get index of pixel, according to where the rgbValue matches the input color palette
+byte = pic.get8MonoPixels( x, y , rgbForGroundColor )   ; get byte of 8 mono colored pixels, starting at x,y  
+rgb = getRGBPixel( x, y )                               ; get rgb object, representing the pixel  
+index = getPalettePixel( x, y, rgbArray)                ; get index of pixel, according to where the rgbValue matches the input color palette  
 
 --res = mod(a,b)                 ; modulus  
 --res = round(a)                 ; rounding down or up  

@@ -22,7 +22,7 @@ See tests folder and src/testgen.c on some examples of code generation embedded 
 Start and End tag:  
 /*!CGJS    - starts a section of nodejs code, where you can do code generation  
 *Note: this has to be on the start of a line  
-CGJS!**/    - end a section of nodejs code, where you can do code generation  
+CGJS!*/    - end a section of nodejs code, where you can do code generation  
 *Note: this has to be on the end of a line  
 
 Code Generation:  

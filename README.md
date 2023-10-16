@@ -31,23 +31,23 @@ end a section of nodejs code, where you can do code generation
 
 --Code Generation:  
 To create/generated code, you can use the following keywords:  
-.byte     - create a small number (0-255)  
-.word     - split the number up into a low and hi byte, and output both  
-.number   - create any number, do not care about it's size  
-.hbyte    - create a hexadecimal byte value  
-.string   - creates a "string"    
-.code     - any C code  
+* .byte     - create a small number (0-255)  
+* .word     - split the number up into a low and hi byte, and output both  
+* .number   - create any number, do not care about it's size  
+* .hbyte    - create a hexadecimal byte value  
+* .string   - creates a "string"    
+* .code     - any C code  
   
 --Utility functions:  
 These are extra functions to help you do code generation or data generation  
 
-*pic = loadPicture( filename )  ; load a picture (png file)  
+* pic = loadPicture( filename )  ; load a picture (png file)  
 > byte = pic.get8MonoPixels( x, y , rgbForGroundColor )   ; get byte of 8 mono colored pixels, starting at x,y    
 > rgb = getRGBPixel( x, y )                               ; get rgb object, representing the pixel    
 > index = getPalettePixel( x, y, rgbArray)                ; get index of pixel, according to where the rgbValue matches the input color palette    
   
-*res = mod(a,b)                                        ; modulus    
-*res = round(a)                                        ; rounding down or up  
+* res = mod(a,b)                                        ; modulus    
+* res = round(a)                                        ; rounding down or up  
   
 * console.log( string or object )                       ; log result during compiling / preprocessing for investigation  
   

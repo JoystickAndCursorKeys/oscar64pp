@@ -1,4 +1,4 @@
-!oscar64pp
+(oscar64pp)
 
 NodeJS preprocessor for Oscar64
 (c) 2023 by Dusty Murray (also under the psuedonym "Cursor Keys" or "Cursor Keys Retro")

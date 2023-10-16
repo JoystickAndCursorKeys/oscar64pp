@@ -23,5 +23,5 @@ Utility function:
 These are extra functions to help you do code generation or data generation:
 
 --loadPicture( filename )  
---mod(a,b) = modulus
---round(a) = rounding down or up
+--mod(a,b) = modulus  
+--round(a) = rounding down or up  

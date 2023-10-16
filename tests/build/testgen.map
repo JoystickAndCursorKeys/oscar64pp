@@ -1,0 +1,25 @@
+sections
+0880 - 0889 : DATA, code
+0889 - 088a : DATA, data
+088a - 088a : BSS, bss
+088c - 9000 : HEAP, heap
+9000 - a000 : STACK, stack
+00f7 - 00f7 : ZEROPAGE, zeropage
+0801 - 0863 : DATA, startup
+a000 - a000 : SSTACK, sstack
+a000 - a000 : SSTACK, main@stack
+
+regions
+00f7 - 00ff : 0000, 0000, zeropage
+0801 - 0880 : 0863, 0062, startup
+0880 - 9000 : 088a, 000a, main
+
+objects
+0801 - 0863 : startup, NATIVE_CODE:startup
+0889 - 088a : spentry, DATA:data
+088a - 088a : BSSStart, START:bss
+088a - 088a : BSSEnd, END:bss
+00f7 - 00f7 : ZeroStart, START:zeropage
+00f7 - 00f7 : ZeroEnd, END:zeropage
+a000 - a000 : StackEnd, END:stack
+0880 - 0889 : main, NATIVE_CODE:code

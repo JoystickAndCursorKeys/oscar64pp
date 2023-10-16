@@ -1,0 +1,13 @@
+main=testgen
+oc=../../oscar64-main/bin/oscar64
+ocwrapper=node\ ../oscar64pp.js\ $oc\ build/gen/
+
+#dummy library, to test passing params to Oscar64
+lib=../ezlibk64/
+
+prgpath=`pwd`
+rm build/*
+set -e
+
+echo compiling
+$ocwrapper -i=$lib -i=src -o=build/${main}.prg src/${main}.c

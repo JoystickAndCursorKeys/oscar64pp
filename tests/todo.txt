@@ -1,0 +1,5 @@
+1. init with
+	-cust charset
+	-on bank x (see Simon)
+	-use png assets, how?
+	-

@@ -51,7 +51,7 @@ These are extra functions to help you do code generation or data generation:
 Create an array of chars, with values that represent the cosinus function.
 
 >char cos[256] = {
->/*!CGJS --------------------------------  
+>/*!CGJS
 >  
 >  const amplitude = 127;   
 >  const frequency = 2 * Math.PI / 256;   
@@ -60,5 +60,5 @@ Create an array of chars, with values that represent the cosinus function.
 >    .byte Math.round(cosValue + 127)  
 >  }  
 >  
->-------------------------------- CGJS!*/  
+>CGJS!*/  
 >};  

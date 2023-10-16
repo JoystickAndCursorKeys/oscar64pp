@@ -1,7 +1,7 @@
 oscar64pp
 
 NodeJS preprocessor for Oscar64
-(c) 2023 by Dusty Murray (also under the psuedonym "Cursor Keys" or "Cursor Keys Retro"
+(c) 2023 by Dusty Murray (also under the psuedonym "Cursor Keys" or "Cursor Keys Retro")
 
 This program can be called instead of the oscar64 compiler.
 It is a wrapper.  It allows for inline code and data generation during compile time.

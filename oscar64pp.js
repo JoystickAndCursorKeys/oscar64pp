@@ -6,7 +6,8 @@
     It is a wrapper.  It allows for inline code and data generation during compile time.
     It does this by allowing you to write javascript code in your c files, inbetween start and end markers.
 
-    First param is tmp folder
+    First param is path_to_compiler_binary
+    Second param is tmp folder
     All params without "-" are files to be preprocessed
     All params with "-" will be used for calling the compiler
     All preprocessed files will be passed to the compiler

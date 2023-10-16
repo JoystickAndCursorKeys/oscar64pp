@@ -23,7 +23,7 @@ Start and End tag:
 >/*!CGJS
 starts a section of nodejs code, where you can do code generation  
 *Note: this has to be on the start of a line  
->CGJS!*/  
+>CGJS!!*/  
 end a section of nodejs code, where you can do code generation  
 *Note: this has to be on the end of a line  
 

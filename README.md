@@ -3,10 +3,10 @@
 Javascript (NodeJS) preprocessor for Oscar64 (a C compiler for the Commodore C64)  
 (c) 2023 by Dusty Murray (also under the psuedonym "Cursor Keys" or "Cursor Keys Retro")
 
-This program can be called instead of the oscar64 compiler.
-It is a wrapper.  It allows for inline code and data generation during compile time.
-It does this by allowing you to write javascript code in your c files, inbetween start and end markers.
-
+This program can be called instead of the Oscar64 compiler.  
+It is a wrapper.  It allows for inline code and data generation during compile time.  
+It does this by allowing you to write javascript code in your c files, inbetween start and end markers.  
+  
 **Prerequisits:**  
 You need to have Nodejs installed, as well as "pngjs"  
 To install pngjs, just type: "npm install pngjs" on the commandline.

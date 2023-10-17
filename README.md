@@ -8,6 +8,7 @@ It is a wrapper.  It allows for inline code and data generation during compile t
 It does this by allowing you to write javascript code in your c files, inbetween start and end markers.  
   
 **Prerequisits:**  
+You need to have Oscar64 installed, which can be found here: https://github.com/drmortalwombat/oscar64
 You need to have Nodejs installed, as well as "pngjs"  
 To install pngjs, just type: "npm install pngjs" on the commandline.
  

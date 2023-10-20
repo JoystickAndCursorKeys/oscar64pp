@@ -3,6 +3,8 @@
 Javascript (NodeJS) preprocessor for Oscar64 (a C compiler for the Commodore C64)  
 (c) 2023 by Dusty Murray (also under the psuedonym "Cursor Keys" or "Cursor Keys Retro")
 
+Oscar64 is a modern C/C++ compiler for Windows or Linux, which compiles code for the Commodore 64, which was a popular computer in the 1980s.
+
 This program can be called instead of the Oscar64 compiler.  
 It is a wrapper.  It allows for inline code and data generation during compile time.  
 It does this by allowing you to write javascript code in your c files, inbetween start and end markers.  

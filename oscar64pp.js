@@ -14,8 +14,11 @@
 */
 
 function greeting() {
+    console.log("----------------------------------------------------------");
     console.log("ᗣᗣᗣ OSCAR64pp - NodeJS preprocessor and wrapper for Oscar64");
-    console.log("Version 0.5");
+    console.log(" Version 0.6");
+    console.log(" Commodore64 rulez!");
+
 }
 
 const fs = require('fs');
@@ -33,6 +36,8 @@ catch (e) {
 }
 
 const indent = "        ";
+var vmCtxGlobal = {};
+var vmLineMacros = {};
 
 function dec2Hex(decimalNumber) {
     const hexadecimalString = decimalNumber.toString(16);
@@ -207,14 +212,72 @@ var isEndCGSectionMarker =  function ( line ) {
     return false;
 }
 
+
+function niceSize( size_in_bytes ) {
+    if( size_in_bytes < 1024 ) {
+        return size_in_bytes + " bytes";
+    }
+    else if( size_in_bytes < 1024 * 1024 ) {
+        return (size_in_bytes / 1024).toFixed(2) + " KB";
+    }
+    else {
+        return (size_in_bytes / (1024 * 1024)).toFixed(2) + " MB";
+    }
+}
+
+function typifyParam( param0 ) {
+
+    var param = param0.trim();
+    if( param0.charAt(0) == "\"" ) {
+        param = param.substring( 1, param.length - 1 );
+    }
+    else {
+        var num = parseInt( param );
+        if( !isNaN( num ) ) {
+            return num;
+        }   
+    }
+    console( "Could not parse linemacro parameter: " + param0 + " as a string or number");
+    return null;
+}
+
+function parseParams( rawParamString ) {
+    var params = [];
+    var param = "";
+    var inString = false;
+    for( var i = 0; i < rawParamString.length; i++ ) {
+        var c = rawParamString.charAt(i);
+        if( c == '"' ) {
+            inString = !inString;
+        }
+        else if( c == ',' && !inString ) {
+            params.push( typifyParam( param.trim() ) );
+            param = "";
+        }
+        else {
+            param += c;
+        }
+    }
+    if( param.length > 0 ) {
+        params.push( param.trim() );
+    }
+    return params;
+}
+
 const processCFile = (inputFile, outputDir) => {
     const content = fs.readFileSync(inputFile, 'utf8');
 
     const lines = content.split('\n');
     let inBlock = false;
     let blockCode = '';
-    let processedContent = '#line 1 "' + inputFile + '"\n';
+
+    const baseName = path.basename(inputFile, path.extname(inputFile));
+    const outputFileName = `${baseName}.g${path.extname(inputFile)}`;
+    const outputPath = path.join(outputDir, outputFileName);
+
+    let processedContent = '#line 1 "' + outputPath + '::' + inputFile + '"\n';
     let lineNr = 0;
+
     for (const line of lines) {
 
         lineNr++;
@@ -236,7 +299,8 @@ const processCFile = (inputFile, outputDir) => {
             vmCtx._outFirst = true;
             vmCtx._outLineCount = 0;
             vmCtx._lineNr = lineNr;
-
+            vmCtx.global = vmCtxGlobal;
+            vmCtx.lineMacros = vmLineMacros;
             //console.log("Executing code: " + blockCode + "\n-------------------", vmCtx);
             
             var context = vm.createContext(vmCtx);
@@ -249,7 +313,7 @@ const processCFile = (inputFile, outputDir) => {
             inBlock = false;
 
             if (vmCtx._outLine) {
-                processedContent += '\n#line ' + lineNr + '\n';
+                processedContent += '\n#line ' + (lineNr+1) + '\n';
             }
         }
         else if (inBlock) {
@@ -291,18 +355,40 @@ const processCFile = (inputFile, outputDir) => {
             blockCode += '\n';  // Add the code after '##'      
         } else {
             //console.log("c----------------");
-            processedContent += line + '\n';
+            var line2 = line;
+            for( var key in vmLineMacros ) {
+                var startStr = "/*!" + key + "*/";
+                var endStr = "/*!*/";
+
+                if( line.indexOf( startStr ) > -1 ) {
+                    var start = line.indexOf( startStr );
+                    var end = line.indexOf( endStr, start );
+                    if( end > -1 ) {
+                        var macroRawParams = line.substring( start + startStr.length, end );
+                        console.log( "macroCode", macroRawParams);
+
+                        var macroParams = parseParams( macroRawParams );
+
+                        vmCtx._outLine = "";
+                        vmCtx._outFirst = true;
+                        vmCtx._outLineCount = 0;                     
+                        vmCtx._lineNr = lineNr;
+
+                        vmLineMacros[key]( ...macroParams );
+                        //console.log( "macroResult", macroResult);
+                        line2 = line.substring( 0, start ) + vmCtx._outLine + line.substring( end + endStr.length );
+                    }
+                }
+            }
+            processedContent += line2 + '\n';
         }
     }
 
 
-    // Construct the output file name
-    const baseName = path.basename(inputFile, path.extname(inputFile));
-    const outputFileName = `${baseName}.g${path.extname(inputFile)}`;
-    const outputPath = path.join(outputDir, outputFileName);
+    processedContent = processedContent.trim();
 
-    fs.writeFileSync(outputPath, processedContent.trim());
-    console.log("Generated " + outputPath)
+    fs.writeFileSync(outputPath, processedContent );
+    console.log("Generated " + outputPath + " size: " + niceSize( processedContent.length ) );
 
     return outputPath;
 };
@@ -338,14 +424,16 @@ for (i = 4; i < process.argv.length; i++) {
 }
 
 
-console.log("Tmp Folder:" + tmpFolder);
-console.log("Files:" + files);
-console.log("Compiler Path:" + compilerPath);
-console.log("Compiler Params:" + compilerParams);
+console.log(" Tmp Folder:" + tmpFolder);
+console.log(" Files:" + files);
+console.log(" Compiler Path:" + compilerPath);
+console.log(" Compiler Params:" + compilerParams);
 
+console.log("----------------------------------------------------------");
+console.log("");
 
 for (var i = 0; i < files.length; i++) {
-    console.log("Processing " + files[i]);
+    console.log("###Processing file " + i + "/" + files.length + ":  " + files[i]);
     if (filesToCompile.length > 0) {
         filesToCompile += " ";
     }    
@@ -353,7 +441,7 @@ for (var i = 0; i < files.length; i++) {
 }
 
 
-console.log("Calling Oscar64 with param: '" + compilerParams + "' and files: " + filesToCompile);
+console.log("###Calling Oscar64 with param: '" + compilerParams + "' and files: " + filesToCompile);
 
 
 var exec = require('child_process').exec;
@@ -364,5 +452,8 @@ var child = exec(compilerPath + " " + compilerParams + " " + filesToCompile,
         if (error !== null) {
             console.log("Detected compiling error, Oscar says HALT!!");
             process.exit(1);
+        }
+        else {
+            console.log("No errors detected, Oscar says Lets go!");
         }
     });
